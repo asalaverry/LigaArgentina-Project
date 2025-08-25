@@ -3,7 +3,7 @@ import csv
 
 # Conexión a la base (crea LPF.db si no existe)
 conn = sqlite3.connect("LPF.db")
-cur = conn.cursor()
+cur = conn.cursor() #crea un objeto "cursor", que es esencial para interactuar con una base de datos
 
 # Crear tablas
 cur.execute("""
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS equipos (
     estadio TEXT,
     nombre_completo TEXT
 )
-""")
+""") #Ejecuta este codigo SQL
 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS jugadores (
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS jugadores (
 # --- Insertar equipos ---
 equipos_map = {}  # Diccionario para mapear nombre → id
 
-with open("clubes.csv", "r", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
+with open("clubes.csv", "r", encoding="utf-8") as f: #Abrir el archivo clubes.csv en modo lectura
+    reader = csv.DictReader(f) #Crea un lector de diccionarios. Lee cada fila del csv como un diccionario. 
     for row in reader:
         cur.execute("""
             INSERT INTO equipos (nombre, logo, estadio, nombre_completo)
@@ -53,7 +53,7 @@ with open("planteles_completos.csv", "r", encoding="utf-8") as f:
             """, (equipo_id, row["Nombre"], row["Posición"], row["Nacionalidad"],
                   row["Número"], row["Edad"]))
 
-conn.commit()
+conn.commit() #Hace el commit
 conn.close()
 
 print("✅ Datos cargados correctamente en LPF.db")
