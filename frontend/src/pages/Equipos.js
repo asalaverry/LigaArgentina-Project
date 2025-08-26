@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Equipos.css"; // Importamos estilos
+import { motion } from "framer-motion"; // 👈 import
 
 function Equipos() {
   const [equipos, setEquipos] = useState([]);
@@ -13,11 +14,18 @@ function Equipos() {
 
   return (
     <div className="equipos-container">
-      {equipos.map(e => (
-        <Link to={`/equipo/${e.id}`} key={e.id} className="equipo-card">
-          <img src={e.logo} alt={e.nombre} className="equipo-logo" />
-          <h3 className="equipo-nombre">{e.nombre}</h3>
-        </Link>
+      {equipos.map((e, i) => (
+        <motion.div
+          key={e.id}
+          initial={{ opacity: 0, y: 40 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: i * 0.05 }} 
+        >
+          <Link to={`/equipo/${e.id}`} className="equipo-card">
+            <img src={e.logo} alt={e.nombre} className="equipo-logo" />
+            <div className="equipo-nombre">{e.nombre}</div>
+          </Link>
+        </motion.div>
       ))}
     </div>
   );

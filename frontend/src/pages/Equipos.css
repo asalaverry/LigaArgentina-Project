@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: 'SF Pro Display', sans-serif;
+  background-color: #141921;
+}
+
 .equipos-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -9,28 +15,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start; /* centra verticalmente*/
   text-decoration: none; /* sacar subrayado del Link */
-  background: #f9f9f9;
+  background: #1E293B;
   border-radius: 12px;
-  padding: 20px;
+  padding-top: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 200px;
 }
 
 .equipo-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0px 4px 12px #27313f;
+  background: #334155;
 }
 
 .equipo-logo {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .equipo-nombre {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: #F8FAFC;
   text-align: center;
+  margin-top: 14px;
 }
