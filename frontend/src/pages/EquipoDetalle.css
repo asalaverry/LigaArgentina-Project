@@ -1,0 +1,97 @@
+.detalle-container {
+  padding: 20px;
+  background-color: #0d1b2a; /* Fondo oscuro */
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.detalle-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.detalle-logo {
+  width: 180px;
+  height: auto;
+}
+
+.detalle-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detalle-nombre {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.detalle-estadio {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #a9c4ff;
+}
+
+.detalle-separador {
+  border: 1px solid #1b263b;
+  margin: 20px 0;
+}
+
+/* JUGADORES */
+.jugadores-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.jugadores-titulo-principal {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.jugadores-grupo {
+  background-color: #1b263b;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.jugadores-subtitulo {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #4cc9f0;
+}
+
+.jugadores-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jugador-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #2c3e50;
+}
+
+.jugador-item:last-child {
+  border-bottom: none;
+}
+
+.jugador-nombre {
+  font-weight: bold;
+}
+
+.jugador-numero {
+  color: #90e0ef;
+  margin-left: 10px;
+}
+
+.jugador-extra {
+  font-size: 0.9rem;
+  color: #b0c4de;
+}
