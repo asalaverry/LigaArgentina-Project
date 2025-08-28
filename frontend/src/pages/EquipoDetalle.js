@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./EquipoDetalle.css";
 
 function EquipoDetalle() {
   const { id } = useParams();
   const [equipo, setEquipo] = useState(null);
+  const [posicionActiva, setPosicionActiva] = useState("Arqueros"); // pestaña activa
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://127.0.0.1:5000/equipos/${id}`)
@@ -32,6 +34,11 @@ function EquipoDetalle() {
   return (
     <div className="detalle-container">
       
+      {/* Botón Home arriba a la derecha */}
+      <button className="btn-home" onClick={() => navigate("/")}>
+        <img src="/home.png" alt="Home" />
+      </button>
+
       {/* HEADER */}
       <div className="detalle-header">
         <img src={equipo.equipo.logo} alt={equipo.equipo.nombre_completo} className="detalle-logo" />
@@ -45,25 +52,35 @@ function EquipoDetalle() {
 
       {/* JUGADORES */}
       <div className="jugadores-seccion">
-        <h2 className="jugadores-titulo-principal">Jugadores:</h2>
-        {Object.entries(jugadoresPorPosicion).map(([pos, jugadores]) => (
-          jugadores.length > 0 && (
-            <div key={pos} className="jugadores-grupo">
-              <h3 className="jugadores-subtitulo">{pos}</h3>
-              <ul className="jugadores-lista">
-                {jugadores.map(j => (
-                  <li key={j.id} className="jugador-item">
-                    <span className="jugador-nombre">{j.nombre}</span>
-                    <span className="jugador-numero">#{j.numero}</span>
-                    <span className="jugador-extra">
-                      {j.nacionalidad}, {j.edad} años
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        ))}
+        <h2 className="jugadores-titulo-principal">Jugadores</h2>
+
+        {/* TABS */}
+        <div className="tabs">
+          {Object.keys(jugadoresPorPosicion).map(pos => (
+            <button
+              key={pos}
+              className={`tab ${posicionActiva === pos ? "activo" : ""}`}
+              onClick={() => setPosicionActiva(pos)}
+            >
+              {pos}
+            </button>
+          ))}
+        </div>
+
+        {/* CONTENIDO */}
+        <div className="jugadores-grupo">
+          <ul className="jugadores-lista">
+            {jugadoresPorPosicion[posicionActiva].map(j => (
+              <li key={j.id} className="jugador-item">
+                <span className="jugador-nombre">{j.nombre}</span>
+                <span className="jugador-numero">#{j.numero}</span>
+                <span className="jugador-extra">
+                  {j.edad} años, {j.nacionalidad}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
