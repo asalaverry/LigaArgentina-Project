@@ -36,6 +36,7 @@
   background-color: #141921; /* azul oscuro */
   color: white;
   min-height: 100vh;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 .detalle-header {
