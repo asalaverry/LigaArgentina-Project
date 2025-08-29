@@ -103,8 +103,9 @@
 }
 
 .jugador-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid #233554;
 }
@@ -115,16 +116,22 @@
 
 .jugador-nombre {
   font-weight: bold;
+  text-align: left;
+  justify-self: start;
 }
 
 .jugador-numero {
   color: #64eaff;
-  margin: 0 15px;
+  margin: 0;
+  text-align: center;
+  justify-self: center;
 }
 
 .jugador-info {
   font-size: 0.9rem;
-  color: #8892b0;
+  color: #e1e5e8;
+  text-align: center;
+  justify-self: end;
 }
 
 /* Botón Home */

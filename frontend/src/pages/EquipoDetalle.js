@@ -69,17 +69,17 @@ function EquipoDetalle() {
 
         {/* CONTENIDO */}
         <div className="jugadores-grupo">
-          <ul className="jugadores-lista">
+          <div className="jugadores-lista">
             {jugadoresPorPosicion[posicionActiva].map(j => (
-              <li key={j.id} className="jugador-item">
+              <div key={j.id} className="jugador-item">
                 <span className="jugador-nombre">{j.nombre}</span>
                 <span className="jugador-numero">#{j.numero}</span>
-                <span className="jugador-extra">
+                <span className="jugador-info">
                   {j.edad} años, {j.nacionalidad}
                 </span>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>
