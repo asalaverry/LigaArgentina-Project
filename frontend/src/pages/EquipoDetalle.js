@@ -18,6 +18,14 @@ function EquipoDetalle() {
       .then(data => setEquipo(data));
   }, [id]);
 
+  useEffect(() => {
+  if (equipo && equipo.equipo && equipo.equipo.nombre) {
+    document.title = equipo.equipo.nombre;
+  } else {
+    document.title = "Liga Argentina Viewer";
+  }
+}, [equipo]);
+
   if (!equipo) return <div>Cargando...</div>;
 
   // Agrupar jugadores por posición
@@ -38,7 +46,7 @@ function EquipoDetalle() {
   return (
     <div className="detalle-container fade-in">
       
-      {/* Botón Home arriba a la derecha */}
+      {/* Botón Home */}
       <button className="btn-home" onClick={() => navigate("/")}>
         <img src="/home.png" alt="Home" />
       </button>
@@ -72,7 +80,7 @@ function EquipoDetalle() {
         </div>
 
         {/* CONTENIDO */}
-        <div className="jugadores-grupo">
+        <div key={posicionActiva} className="jugadores-grupo fade-in">
           <div className="jugadores-lista">
             {jugadoresPorPosicion[posicionActiva].map(j => (
               <div key={j.id} className="jugador-item">

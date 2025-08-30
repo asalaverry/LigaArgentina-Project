@@ -7,9 +7,17 @@ function Equipos() {
   const [equipos, setEquipos] = useState([]);
 
   useEffect(() => {
+    document.title = "Liga Argentina Viewer";
+  }, []);
+
+  useEffect(() => {
     fetch("http://127.0.0.1:5000/equipos")
       .then(res => res.json())
-      .then(data => setEquipos(data.equipos));
+      .then(data => {
+        setTimeout(() => {
+          setEquipos(data.equipos);
+        }, 500); // 500ms de delay
+      });
   }, []);
 
   return (
