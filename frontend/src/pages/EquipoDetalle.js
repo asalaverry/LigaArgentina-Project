@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EquipoDetalle.css";
 
+//Para agregar las flags en jugadores
+import Flag from "react-world-flags";
+import { getISOCode } from "./utils/flags"; 
+
 function EquipoDetalle() {
   const { id } = useParams();
   const [equipo, setEquipo] = useState(null);
@@ -32,7 +36,7 @@ function EquipoDetalle() {
   });
 
   return (
-    <div className="detalle-container">
+    <div className="detalle-container fade-in">
       
       {/* Botón Home arriba a la derecha */}
       <button className="btn-home" onClick={() => navigate("/")}>
@@ -73,9 +77,12 @@ function EquipoDetalle() {
             {jugadoresPorPosicion[posicionActiva].map(j => (
               <div key={j.id} className="jugador-item">
                 <span className="jugador-nombre">{j.nombre}</span>
-                <span className="jugador-numero">#{j.numero}</span>
+                <span className="jugador-numero">#{j.numero || "N/A"}</span>
                 <span className="jugador-info">
-                  {j.edad} años, {j.nacionalidad}
+                  {j.edad} años
+                  {getISOCode(j.nacionalidad) && (
+                    <Flag code={getISOCode(j.nacionalidad)} className="flag" />
+                  )}
                 </span>
               </div>
             ))}
