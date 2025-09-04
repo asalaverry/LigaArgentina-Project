@@ -3,7 +3,7 @@ import sqlite3
 def obtener_nacionalidades_unicas(nombre_db):
     """
     Obtiene y retorna una lista de todas las nacionalidades únicas
-    de los jugadores en la base de datos.
+    de los jugadores en la base de datos. --> Utilidad para extraer las banderas de los países.
     """
     nacionalidades = []
     conn = None
